@@ -19,6 +19,9 @@ gem "rails-i18n"
 
 
 group :development, :test do
+  gem 'capistrano-rails'
+  gem 'capistrano-passenger'
+
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
   gem 'rspec-rails', '~> 3.6'

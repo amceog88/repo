@@ -1,8 +1,4 @@
-
-lock "~> 3.11.0"
-
 `ssh-add`
-# config valid for current version and patch releases of Capistrano
 lock "~> 3.11.0"
 
 set :application, 'repo'
@@ -13,6 +9,7 @@ set :repo_url, 'git@github.com:amceog88/repo.git'
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, '/home/amceog88/repo'
+set :default_env, { path: "/usr/local/ruby25/bin:$PATH" }
 
 # Default value for :scm is :git
 # set :scm, :git

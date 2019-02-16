@@ -5,7 +5,7 @@ ruby '2.5.1'
 
 
 gem 'rails', '~> 5.2.1'
-gem 'sqlite3'
+
 gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -16,7 +16,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem "kaminari"
 gem "rails-i18n"
-
+gem "pg"
 
 group :development, :test do
   gem 'capistrano-rails'
@@ -24,6 +24,7 @@ group :development, :test do
   gem "capistrano-rbenv", '~> 2.1'
 
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
 
   gem 'rspec-rails', '~> 3.6'
   gem "factory_bot_rails", "~> 4.0"
@@ -39,6 +40,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'sqlite3'
 end
 
 group :test do

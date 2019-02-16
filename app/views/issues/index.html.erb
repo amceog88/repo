@@ -1,0 +1,29 @@
+<table class='table table-striped table-hover table-bordered table-condensed table-responsive'>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @issues.each do |issue| %>
+      <tr>
+        <td>
+          <%= issue.title %>
+        </td>
+        <td>
+          <%= issue.description %>
+        </td>
+        <!-- <td><%= link_to 'Show', issue, :class=>'btn btn-cerulean' %></td> -->
+      <td>
+        <%= link_to 'Edit', edit_issue_path(issue), :class=>'btn btn-eminence' %>
+      </td>
+      <td>
+        <%= link_to 'Destroy', issue, method: :delete, data: { confirm: 'Are you sure?' }, :class=>'btn btn-danger' %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

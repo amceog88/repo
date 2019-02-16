@@ -21,6 +21,7 @@ gem "rails-i18n"
 group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano-passenger'
+  gem "capistrano-rbenv", '~> 2.1'
 
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 

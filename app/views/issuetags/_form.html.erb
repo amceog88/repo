@@ -1,0 +1,22 @@
+<%= form_with(model: issuetag, local: true) do |form| %>
+  <% if issuetag.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(issuetag.errors.count, "error") %> prohibited this issuetag from being saved:</h2>
+
+      <ul>
+      <% issuetag.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

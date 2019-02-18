@@ -2,27 +2,23 @@ class IssuesController < ApplicationController
   before_action :set_issue, only: [:show, :edit, :update, :destroy]
 
   def index
-    @issues = Issue.all.order("created_at DESC")
-  end
-
-  def new
     @issue = Issue.new
+    @issues = Issue.where(:user == current_user).order("created_at DESC").page(params[:page]).per(10)
   end
 
   def create
     @issue = Issue.new(issue_params)
+    @issue.user = current_user
     if @issue.save
       redirect_to root_path, notice: 'Issue was successfully created.'
     else
-      render :new
+      redirect_to root_path
     end
   end
 
-  def edit
-  end
 
   def update
-    if @admin_bulletin.update(issue_params)
+    if @issue.update(issue_params)
       redirect_to root_path, notice: 'Bulletin was successfully updated.'
     else
       render :edit
@@ -41,7 +37,7 @@ private
   end
 
   def issue_params
-    params.require(:issue).permit(:title, :description)
+    params.require(:issue).permit(:title, :description, :end_time, :state)
   end
 
 end

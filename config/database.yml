@@ -20,7 +20,7 @@ test:
   adapter: postgresql
   encoding: unicode
   pool: 5
-  host: 127.0.0.1
+  host: localhost
   database: repo
   username: postgres
   password: passwd
@@ -29,7 +29,7 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: 5
-  host: 127.0.0.1
+  host: localhost
   database: repo
   username: postgres
   password: passwd

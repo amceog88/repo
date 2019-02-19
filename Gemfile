@@ -22,6 +22,7 @@ gem 'pry'
 gem "ransack"
 gem "simple_calendar", "~> 2.0"
 gem "google-cloud-storage", "~> 1.11", require: false
+gem 'mini_magick'
 
 group :development, :test do
   gem 'capistrano-rails'

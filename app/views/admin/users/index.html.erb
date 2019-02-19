@@ -1,0 +1,34 @@
+<table class='table table-striped table-hover table-bordered table-condensed table-responsive'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <%= form_for user, url: admin_root_path do |form| %>
+        <tr>
+          <td >
+            <%= form.text_field :name, required: true %>
+          </td>
+          <td>
+            <%= form.email_field :email, required: true %>
+          </td>
+          <td>
+            <%= form.select(:role, ['nomal', 'admin'])%>
+          </td>
+          <td>
+            <%= form.submit 'Edit', :class=>'btn btn-primary' %>
+          </td>
+          <td>
+            <%= link_to 'Destroy', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, :class=>'btn btn-danger' %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

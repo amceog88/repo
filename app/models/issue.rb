@@ -5,6 +5,8 @@ class Issue < ApplicationRecord
   has_many :issue_tag_ships, dependent: :destroy
   has_many :issuetags, through: :issue_tag_ships
 
+  validates_numericality_of :position, :in => 1..3
+
   after_create do
     hashtags = self.description.scan(/#\w+/)
     hashtags.uniq.map do |hashtag|

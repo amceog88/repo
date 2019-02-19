@@ -14,7 +14,7 @@ class Admin::UsersController < Admin::ApplicationController
   end
 
   def destroy
-
+   @user.destroy
   end
 
 private

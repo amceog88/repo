@@ -37,7 +37,7 @@ private
   end
 
   def issue_params
-    params.require(:issue).permit(:title, :description, :end_time, :state)
+    params.require(:issue).permit(:title, :description, :end_time, :state, :file, :position)
   end
 
 end

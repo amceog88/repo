@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+before_action :check_login, except: [:new, :create]
 
   def new
   end

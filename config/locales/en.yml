@@ -31,3 +31,12 @@
 
 en:
   hello: "Hello world"
+  logout: "logout"
+  admin: "admin"
+  until: "until"
+  edit: "Edit"
+  destroy: "Destroy"
+  name: "Name"
+  email: "Email"
+  role: "Role"
+  login: 'Login'

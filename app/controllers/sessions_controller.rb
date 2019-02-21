@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+before_action :check_login, except: [:new, :create, :destroy]
+
   def new
   end
 

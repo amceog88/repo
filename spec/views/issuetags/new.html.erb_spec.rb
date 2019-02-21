@@ -7,12 +7,12 @@ RSpec.describe "issuetags/new", type: :view do
     ))
   end
 
-  it "renders new issuetag form" do
-    render
+  # it "renders new issuetag form" do
+  #   render
 
-    assert_select "form[action=?][method=?]", issuetags_path, "post" do
+  #   assert_select "form[action=?][method=?]", issuetags_path, "post" do
 
-      assert_select "input[name=?]", "issuetag[name]"
-    end
-  end
+  #     assert_select "input[name=?]", "issuetag[name]"
+  #   end
+  # end
 end

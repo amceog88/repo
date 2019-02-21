@@ -41,101 +41,101 @@ RSpec.describe IssuetagsController, type: :controller do
   # IssuetagsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  describe "GET #index" do
-    it "returns a success response" do
-      Issuetag.create! valid_attributes
-      get :index, params: {}, session: valid_session
-      expect(response).to be_successful
-    end
-  end
+  # describe "GET #index" do
+  #   it "returns a success response" do
+  #     Issuetag.create! valid_attributes
+  #     get :index, params: {}, session: valid_session
+  #     expect(response).to be_successful
+  #   end
+  # end
 
-  describe "GET #show" do
-    it "returns a success response" do
-      issuetag = Issuetag.create! valid_attributes
-      get :show, params: {id: issuetag.to_param}, session: valid_session
-      expect(response).to be_successful
-    end
-  end
+  # describe "GET #show" do
+  #   it "returns a success response" do
+  #     issuetag = Issuetag.create! valid_attributes
+  #     get :show, params: {id: issuetag.to_param}, session: valid_session
+  #     expect(response).to be_successful
+  #   end
+  # end
 
-  describe "GET #new" do
-    it "returns a success response" do
-      get :new, params: {}, session: valid_session
-      expect(response).to be_successful
-    end
-  end
+  # describe "GET #new" do
+  #   it "returns a success response" do
+  #     get :new, params: {}, session: valid_session
+  #     expect(response).to be_successful
+  #   end
+  # end
 
-  describe "GET #edit" do
-    it "returns a success response" do
-      issuetag = Issuetag.create! valid_attributes
-      get :edit, params: {id: issuetag.to_param}, session: valid_session
-      expect(response).to be_successful
-    end
-  end
+  # describe "GET #edit" do
+  #   it "returns a success response" do
+  #     issuetag = Issuetag.create! valid_attributes
+  #     get :edit, params: {id: issuetag.to_param}, session: valid_session
+  #     expect(response).to be_successful
+  #   end
+  # end
 
-  describe "POST #create" do
-    context "with valid params" do
-      it "creates a new Issuetag" do
-        expect {
-          post :create, params: {issuetag: valid_attributes}, session: valid_session
-        }.to change(Issuetag, :count).by(1)
-      end
+  # describe "POST #create" do
+  #   context "with valid params" do
+  #     it "creates a new Issuetag" do
+  #       expect {
+  #         post :create, params: {issuetag: valid_attributes}, session: valid_session
+  #       }.to change(Issuetag, :count).by(1)
+  #     end
 
-      it "redirects to the created issuetag" do
-        post :create, params: {issuetag: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(Issuetag.last)
-      end
-    end
+  #     it "redirects to the created issuetag" do
+  #       post :create, params: {issuetag: valid_attributes}, session: valid_session
+  #       expect(response).to redirect_to(Issuetag.last)
+  #     end
+  #   end
 
-    context "with invalid params" do
-      it "returns a success response (i.e. to display the 'new' template)" do
-        post :create, params: {issuetag: invalid_attributes}, session: valid_session
-        expect(response).to be_successful
-      end
-    end
-  end
+  #   context "with invalid params" do
+  #     it "returns a success response (i.e. to display the 'new' template)" do
+  #       post :create, params: {issuetag: invalid_attributes}, session: valid_session
+  #       expect(response).to be_successful
+  #     end
+  #   end
+  # end
 
-  describe "PUT #update" do
-    context "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
+  # describe "PUT #update" do
+  #   context "with valid params" do
+  #     let(:new_attributes) {
+  #       skip("Add a hash of attributes valid for your model")
+  #     }
 
-      it "updates the requested issuetag" do
-        issuetag = Issuetag.create! valid_attributes
-        put :update, params: {id: issuetag.to_param, issuetag: new_attributes}, session: valid_session
-        issuetag.reload
-        skip("Add assertions for updated state")
-      end
+  #     it "updates the requested issuetag" do
+  #       issuetag = Issuetag.create! valid_attributes
+  #       put :update, params: {id: issuetag.to_param, issuetag: new_attributes}, session: valid_session
+  #       issuetag.reload
+  #       skip("Add assertions for updated state")
+  #     end
 
-      it "redirects to the issuetag" do
-        issuetag = Issuetag.create! valid_attributes
-        put :update, params: {id: issuetag.to_param, issuetag: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(issuetag)
-      end
-    end
+  #     it "redirects to the issuetag" do
+  #       issuetag = Issuetag.create! valid_attributes
+  #       put :update, params: {id: issuetag.to_param, issuetag: valid_attributes}, session: valid_session
+  #       expect(response).to redirect_to(issuetag)
+  #     end
+  #   end
 
-    context "with invalid params" do
-      it "returns a success response (i.e. to display the 'edit' template)" do
-        issuetag = Issuetag.create! valid_attributes
-        put :update, params: {id: issuetag.to_param, issuetag: invalid_attributes}, session: valid_session
-        expect(response).to be_successful
-      end
-    end
-  end
+  #   context "with invalid params" do
+  #     it "returns a success response (i.e. to display the 'edit' template)" do
+  #       issuetag = Issuetag.create! valid_attributes
+  #       put :update, params: {id: issuetag.to_param, issuetag: invalid_attributes}, session: valid_session
+  #       expect(response).to be_successful
+  #     end
+  #   end
+  # end
 
-  describe "DELETE #destroy" do
-    it "destroys the requested issuetag" do
-      issuetag = Issuetag.create! valid_attributes
-      expect {
-        delete :destroy, params: {id: issuetag.to_param}, session: valid_session
-      }.to change(Issuetag, :count).by(-1)
-    end
+  # describe "DELETE #destroy" do
+  #   it "destroys the requested issuetag" do
+  #     issuetag = Issuetag.create! valid_attributes
+  #     expect {
+  #       delete :destroy, params: {id: issuetag.to_param}, session: valid_session
+  #     }.to change(Issuetag, :count).by(-1)
+  #   end
 
-    it "redirects to the issuetags list" do
-      issuetag = Issuetag.create! valid_attributes
-      delete :destroy, params: {id: issuetag.to_param}, session: valid_session
-      expect(response).to redirect_to(issuetags_url)
-    end
-  end
+  #   it "redirects to the issuetags list" do
+  #     issuetag = Issuetag.create! valid_attributes
+  #     delete :destroy, params: {id: issuetag.to_param}, session: valid_session
+  #     expect(response).to redirect_to(issuetags_url)
+  #   end
+  # end
 
 end

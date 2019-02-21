@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :issuetags
+  # resources :issuetags
   root to: 'issues#index'
 
   resources :issues

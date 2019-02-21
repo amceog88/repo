@@ -34,4 +34,8 @@ class Issue < ApplicationRecord
     else
     end
   end
+
+  def importance
+    ("★" if position == 1) || ("★★" if position == 2) || "★★★"
+  end
 end

@@ -10,7 +10,7 @@
           <div class="panel-heading text-center col-12" style="font-size: 12px;">
             <%= form.select(:state, ['To Do','Doing', 'Done'], {})%>
             <%= form.text_field :title, maxlength: 30, required: true %>
-            <%= form.select(:position, [1,2,3])%>
+            <%= form.select(:position, options_for_select([["recommended", 1], ["suggested", 2], ["required", 3]]))%>
             <p class="pull-right"><%= form.date_field :end_time %></p>
           </div>
           <div class="panel-body">
@@ -35,7 +35,7 @@
                 <%= issue.state %>
               </span>
               &nbsp;<%= issue.title %>
-              <%= issue.position.times {|i| "★"} %>
+              <span class="issue-importance"><%= issue.importance %></span>
             </div>
             <p style="font-size: 12px;">until: <%= issue.end_time.strftime("%Y/%m/%d") %></p>
           </div>

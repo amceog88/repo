@@ -10,7 +10,7 @@ class Admin::UsersController < Admin::ApplicationController
   end
 
   def update
-    if @user.update(user_params)
+    if !@user.last_admin && @user.update(user_params)
       redirect_to admin_root_path, notice: 'User was successfully updated.'
     else
       redirect_to admin_root_path
@@ -18,7 +18,9 @@ class Admin::UsersController < Admin::ApplicationController
   end
 
   def destroy
-   @user.destroy
+    unless @user.last_admin
+      @user.destroy
+    end
   end
 
 private

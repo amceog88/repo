@@ -5,6 +5,9 @@ class Issue < ApplicationRecord
   has_many :issue_tag_ships, dependent: :destroy
   has_many :issuetags, through: :issue_tag_ships
 
+  has_many :issue_group_ships, dependent: :destroy
+  has_many :groups, through: :issue_group_ships
+
   validates_numericality_of :priority, :in => 1..3
 
   after_create do

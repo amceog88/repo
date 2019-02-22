@@ -10,10 +10,9 @@ RSpec.describe IssuesController, type: :controller do
       response.status.should be(200)
     end
 
-    it "it can get current issue" do
-
-    end
   end
+
+
   describe "Issue without login" do
     it "can't login without account" do
       get :index

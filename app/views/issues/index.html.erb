@@ -1,6 +1,15 @@
 
-
-
+<div class="container" style="text-align: center;">
+  <%= search_form_for @q do |f| %>
+    <div class="col-md-8 col-md-offset-2">
+      <div class="input-group input-group-sm pull-left p-10 clearfix">
+        <span  class="input-group-btn"><%= sort_link(@q, :state, 'Sort by state', {}, :class => 'btn btn-info') %></span>
+        <%=f.search_field :issuetags_name_cont, :class=>'form-control input-group' %>
+        <span class="input-group-btn active"><%= f.submit  "Search Tag", name: nil , :class => "btn btn-primary" %></span>
+      </div>
+    </div>
+  <% end %>
+</div>
 
 <div class="post-block col-lg-12 col-md-12 col-sm-12 col-xs-12">
   <div class="transitions-enabled" id="posts_index">
@@ -10,23 +19,20 @@
           <div class="panel-heading text-center col-12" style="font-size: 12px;">
             <%= form.select(:state, ['To Do','Doing', 'Done'], {})%>
             <%= form.text_field :title, maxlength: 30, required: true %>
-            <%= form.select(:position, options_for_select([["recommended", 1], ["suggested", 2], ["required", 3]]))%>
+            <%= form.select(:priority, options_for_select([["recommended", 1], ["suggested", 2], ["required", 3]]))%>
             <p class="pull-right"><%= form.date_field :end_time %></p>
           </div>
           <div class="panel-body">
             <%= form.text_area :description, maxlength: 120, :class=>'form-control' %>
           </div>
+          <div class="panel-body">
+            <%= form.file_field :file, :class => 'btn btn-info' %>
+          </div>
           <div class="panel-footer col-md-12">
-            <%= form.file_field :file, :class => 'btn btn-info col-md-3' %>
             <%= form.submit :class => 'btn btn-primary' %>
           </div>
         </div>
       <% end %>
-      <!-- <div class="box panel panel-default">
-        <div class="panel-title text-center">
-          To do
-        </div>
-      </div> -->
       <% @issues.each do |issue| %>
         <div class="box panel panel-default">
           <div class="panel-heading text-center">
@@ -39,11 +45,16 @@
             </div>
             <p style="font-size: 12px;">until: <%= issue.end_time.strftime("%Y/%m/%d") %></p>
           </div>
-
           <div class="panel-body">
             <%= truncate(issue.description, length: 80) %>
           </div>
-
+          <div class="panel-body">
+            <%= link_to ("Download: " + issue.file.filename.to_s), issue.file, :class=>'btn btn-info' if issue.file.attached? %>
+            <% issue.issuetags.each do |tag| %>
+              <%= link_to tag.name, root_path("q[issuetags_name_cont]": tag.name), class: "btn btn-primary" %>
+              <!-- <div class="btn btn-primary"> <%= tag.name %></div> -->
+            <% end %>
+          </div>
           <div class="panel-footer">
             <% if issue.user == @current_user %>
               <td><%= link_to 'Edit', edit_issue_path(issue), :class=>'btn btn-info' %></td>

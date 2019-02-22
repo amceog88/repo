@@ -3,7 +3,8 @@ class IssuesController < ApplicationController
 
   def index
     @issue = Issue.new
-    @issues = Issue.where(:user == current_user).order("created_at DESC").page(params[:page]).per(10)
+    @q = Issue.ransack(params[:q])
+    @issues = @q.result(distinct: true).where(user: current_user).order("created_at DESC").page(params[:page]).per(10)
   end
 
   def create
@@ -19,7 +20,7 @@ class IssuesController < ApplicationController
 
   def update
     if @issue.update(issue_params)
-      redirect_to root_path, notice: 'Bulletin was successfully updated.'
+      redirect_to root_path, notice: 'Issue was successfully updated.'
     else
       render :edit
     end
@@ -27,7 +28,7 @@ class IssuesController < ApplicationController
 
   def destroy
     @issue.destroy
-    redirect_to root_path, notice: 'Bulletin was successfully destroyed.'
+    redirect_to root_path, notice: 'Issue was successfully destroyed.'
   end
 
 private
@@ -37,7 +38,7 @@ private
   end
 
   def issue_params
-    params.require(:issue).permit(:title, :description, :end_time, :state, :file, :position)
+    params.require(:issue).permit(:title, :description, :end_time, :state, :file, :priority)
   end
 
 end

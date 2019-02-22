@@ -7,5 +7,7 @@ zh-TW:
   destroy: "刪除"
   name: "名字"
   email: "信箱"
+  password: "密碼"
   role: "權限"
   login: '登錄'
+  sign_up: "註冊"

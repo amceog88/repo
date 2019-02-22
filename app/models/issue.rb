@@ -5,7 +5,7 @@ class Issue < ApplicationRecord
   has_many :issue_tag_ships, dependent: :destroy
   has_many :issuetags, through: :issue_tag_ships
 
-  validates_numericality_of :position, :in => 1..3
+  validates_numericality_of :priority, :in => 1..3
 
   after_create do
     hashtags = self.description.scan(/#\w+/)
@@ -36,6 +36,6 @@ class Issue < ApplicationRecord
   end
 
   def importance
-    ("★" if position == 1) || ("★★" if position == 2) || "★★★"
+    ("★" if priority == 1) || ("★★" if priority == 2) || "★★★"
   end
 end

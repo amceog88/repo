@@ -10,7 +10,11 @@ class Admin::UsersController < Admin::ApplicationController
   end
 
   def update
-
+    if @user.update(user_params)
+      redirect_to admin_root_path, notice: 'User was successfully updated.'
+    else
+      redirect_to admin_root_path
+    end
   end
 
   def destroy
@@ -23,7 +27,7 @@ private
     @user = User.find(params[:id])
   end
 
-  def issue_params
+  def user_params
     params.require(:user).permit(:name, :email, :role)
   end
 end

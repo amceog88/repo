@@ -38,5 +38,7 @@ en:
   destroy: "Destroy"
   name: "Name"
   email: "Email"
+  password: "password"
   role: "Role"
   login: 'Login'
+  sign_up: "Sign up"

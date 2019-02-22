@@ -4,8 +4,12 @@ Rails.application.routes.draw do
 
   resources :issues
 
+  resources :calendars, only: [:index]
+
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
+
+  resources :users
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'

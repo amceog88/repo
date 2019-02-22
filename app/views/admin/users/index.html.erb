@@ -10,7 +10,7 @@
 
   <tbody>
     <% @users.each do |user| %>
-      <%= form_for user, url: admin_root_path do |form| %>
+      <%= form_for user, url: admin_user_path(user) do |form| %>
         <tr>
           <td >
             <%= form.text_field :name, required: true %>

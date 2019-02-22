@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 before_action :check_login, except: [:new, :create]
+before_action :set_user, only: [:show, :update]
 
   def new
   end
@@ -14,10 +15,25 @@ before_action :check_login, except: [:new, :create]
     end
   end
 
+  def show
+  end
+
+  def update
+    if @user.update(user_params)
+      redirect_to user_path(@user), notice: 'User was successfully updated.'
+    else
+      redirect_to user_path(@user)
+    end
+  end
+
 private
 
+  def set_user
+    @user = User.find(params[:id])
+  end
+
   def user_params
-    params.require(:user).permit(:name, :email, :password)
+    params.require(:user).permit(:name, :email, :password, :avatar)
   end
 
 end

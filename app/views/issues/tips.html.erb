@@ -1,0 +1,12 @@
+<div class="post-block col-lg-12 col-md-12 col-sm-12 col-xs-12">
+  <div class="transitions-enabled" id="posts_index">
+    <div class="col-md-8 col-md-offset-2">
+      <% @not_read_issues.each do |issue| %>
+        <%= render partial: "issue", locals: {issue: issue} %>
+      <% end %>
+      <% @deadline_issues.each do |issue| %>
+        <%= render partial: "issue", locals: {issue: issue} %>
+      <% end %>
+    </div>
+  </div>
+</div>

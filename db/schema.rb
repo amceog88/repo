@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_22_041714) do
+ActiveRecord::Schema.define(version: 2019_02_22_062219) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2019_02_22_041714) do
     t.datetime "end_time"
     t.string "state"
     t.integer "priority"
+    t.boolean "is_readed", default: false
   end
 
   create_table "issuetags", force: :cascade do |t|

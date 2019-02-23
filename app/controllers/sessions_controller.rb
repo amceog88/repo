@@ -9,7 +9,7 @@ before_action :check_login, except: [:new, :create, :destroy]
     if user && user.password == params[:password].first
 
       session[:user_id] = user.id
-      redirect_to '/'
+      redirect_to tips_issues_path
     else
       redirect_to '/login'
     end

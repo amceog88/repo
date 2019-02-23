@@ -10,6 +10,8 @@ class Issue < ApplicationRecord
 
   validates_numericality_of :priority, :in => 1..3
 
+  scope :deadline_issues, -> { where("end_time < ?", Time.now + 3.days ) }
+
   after_create do
     hashtags = self.description.scan(/#\w+/)
     hashtags.uniq.map do |hashtag|
@@ -40,5 +42,11 @@ class Issue < ApplicationRecord
 
   def importance
     ("★" if priority == 1) || ("★★" if priority == 2) || "★★★"
+  end
+
+  def until_color
+    if Issue.deadline_issues.where(id: self.id).count == 1
+      "color: red;"
+    end
   end
 end

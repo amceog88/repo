@@ -1,0 +1,30 @@
+<div class="box panel panel-default">
+  <div class="panel-heading text-center">
+    <div class="text-center">
+      <%= "(New)" unless issue.is_readed %>
+      <h4>
+        <span class="label <%= issue.state_tag %>" style="font-size: 12px;">
+          <%= issue.state %>
+        </span>
+        &nbsp;<%= issue.title %>
+      </h4>
+      <span class="issue-importance"><%= issue.importance %></span>
+    </div>
+    <p style="<%= issue.until_color %>">until: <%= issue.end_time.strftime("%Y/%m/%d") %></p>
+  </div>
+  <div class="panel-body">
+    <%= issue.description %>
+  </div>
+  <div class="panel-body">
+    <%= link_to ("Download: " + issue.file.filename.to_s), issue.file, :class=>'btn btn-info' if issue.file.attached? %>
+    <% issue.issuetags.each do |tag| %>
+      <%= link_to tag.name, root_path("q[issuetags_name_cont]": tag.name), class: "btn btn-primary" %>
+    <% end %>
+  </div>
+  <div class="panel-footer">
+    <% if issue.user == @current_user %>
+      <td><%= link_to 'Edit', edit_issue_path(issue), :class=>'btn btn-info' %></td>
+      <td><%= link_to 'Destroy', issue, method: :delete, data: { confirm: 'Are you sure?' }, :class=>'btn btn-danger' %></td>
+    <% end %>
+  </div>
+</div>

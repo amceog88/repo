@@ -1,5 +1,6 @@
 class IssuesController < ApplicationController
   before_action :set_issue, only: [:show, :edit, :update, :destroy]
+  before_action :redirect_search, only: [:index]
 
   def index
     @issue = Issue.new
@@ -31,6 +32,13 @@ class IssuesController < ApplicationController
     redirect_to root_path, notice: 'Issue was successfully destroyed.'
   end
 
+  def tips
+    @not_read_issues = Issue.where(user: current_user, is_readed: false).order("created_at DESC")
+    @deadline_issues = Issue.deadline_issues.where(user: current_user).order("created_at DESC")
+
+    @not_read_issues.all.update(is_readed: true)
+  end
+
 private
 
   def set_issue
@@ -39,6 +47,12 @@ private
 
   def issue_params
     params.require(:issue).permit(:title, :description, :end_time, :state, :file, :priority)
+  end
+
+  def redirect_search
+    if params[:group]
+      redirect_to search_index_path(search: params[:q][:issuetags_name_cont])
+    end
   end
 
 end

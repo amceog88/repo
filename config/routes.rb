@@ -2,7 +2,13 @@ Rails.application.routes.draw do
   # resources :issuetags
   root to: 'issues#index'
 
-  resources :issues
+  resources :issues do
+    collection do
+      get 'tips'
+    end
+  end
+
+  resources :search, only: [:index]
 
   resources :calendars, only: [:index]
 

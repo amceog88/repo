@@ -15,5 +15,7 @@
 //= require rails-ujs
 //= require activestorage
 //= require bootstrap.min.js
+//= require select2
+//= require select2_locale_zh-TW
 //= require_tree .
 

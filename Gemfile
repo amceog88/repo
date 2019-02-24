@@ -9,7 +9,7 @@ gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
-gem 'turbolinks', '~> 5'
+# gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem "kaminari"
@@ -23,6 +23,8 @@ gem "ransack"
 gem "simple_calendar", "~> 2.0"
 gem "google-cloud-storage", "~> 1.11", require: false
 gem 'mini_magick'
+
+gem 'select2-rails'
 
 group :development, :test do
   gem 'capistrano-rails'

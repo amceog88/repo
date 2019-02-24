@@ -1,15 +1,15 @@
 
 <div class="container" style="text-align: center;">
   <%= search_form_for @q do |f| %>
-      <div class="col-md-6 col-md-offset-4">
-        <div class="input-group input-group-sm pull-left p-10 clearfix">
-          <span  class="input-group-btn"><%= sort_link(@q, :end_time, 'Sort by deadline', {}, :class => 'btn btn-info') %></span>
-          <span  class="input-group-btn"><%= sort_link(@q, :state, 'Sort by state', {}, :class => 'btn btn-info') %></span>
-          <%=f.search_field :issuetags_name_cont, :class=>'form-control input-group' %>
-          <span class="input-group-btn active"><%= f.submit  "Search Tag", name: nil , :class => "btn btn-primary", style: "margin-right: 0;" %></span>
-          <span class="input-group-btn active"><%= f.submit  "Group or User", name: "group" , :class => "btn btn-primary" %></span>
-        </div>
+    <div class="col-md-6 col-md-offset-4">
+      <div class="input-group input-group-sm pull-left p-10 clearfix">
+        <span  class="input-group-btn"><%= sort_link(@q, :end_time, 'Sort by deadline', {}, :class => 'btn btn-info') %></span>
+        <span  class="input-group-btn"><%= sort_link(@q, :state, 'Sort by state', {}, :class => 'btn btn-info') %></span>
+        <%=f.search_field :issuetags_name_cont, placeholder: "Search for...", :class=>'form-control input-group' %>
+        <span class="input-group-btn active"><%= f.submit  "Tag", :class => "btn btn-primary", style: "margin-right: 0;" %></span>
+        <span class="input-group-btn active"><%= f.submit  "Group or User", name: "group" , :class => "btn btn-primary" %></span>
       </div>
+    </div>
   <% end %>
 </div>
 

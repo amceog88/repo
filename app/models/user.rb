@@ -12,4 +12,8 @@ class User < ApplicationRecord
   def last_admin
     self.role ==  "admin" && User.all.where(role: "admin").count <= 1
   end
+
+  def is_member?(group)
+    group.users.include?(self)
+  end
 end

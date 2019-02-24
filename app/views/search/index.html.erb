@@ -1,0 +1,66 @@
+<%= form_for @group, :url => groups_path, method: :post do |f| %>
+  <div class="text-center container">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="input-group input-group-sm">
+          <%= f.text_field :name, placeholder: "Create new group..", :class=>'form-control input-group', type: "text" %>
+          <%= f.collection_select :user_ids, User.where.not(id: @current_user.id).order(:id), :id, :name, {}, {multiple: true, :class => 'form-control input-group', :required => true} %>
+          <span class="input-group-btn active"><%= f.submit  "Create", :class => "btn btn-primary" %></span>
+      </div>
+    </div>
+  </div>
+<% end %>
+<h3 style="text-align: center;">Groups</h3>
+<div class="post-block col-md-12">
+  <div class="transitions-enabled" id="posts_index">
+    <% @groups.each do |group| %>
+      <div class="col-md-3">
+        <div class="box panel panel-default">
+          <div class="panel-heading text-center">
+          </div>
+          <div class="panel-body">
+            <%= group.name %>
+          </div>
+          <div class="panel-footer">
+            <% if @current_user.is_member?(group) %>
+              <%= link_to 'Leave', leave_group_path(group), method: :post , :class => "btn btn-primary" %>
+            <% else %>
+              <%= link_to 'Join', join_group_path(group), method: :post , :class => "btn btn-primary" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<br>
+<h3 style="text-align: center;">Users</h3>
+<div class="post-block col-md-12">
+  <div class="transitions-enabled" id="posts_index">
+    <% @users.each do |user| %>
+      <div class="col-md-3">
+        <div class="box panel panel-default">
+          <div class="panel-heading text-center">
+            <% if user.avatar.attached? %>
+              <img id="img_prev" src="<%= url_for(user.avatar) %>" alt="your image" class="img-thumbnail"/>
+            <% else %>
+              <img id="img_prev" alt="User"  src="https://s3.amazonaws.com/uifaces/faces/twitter/haruintesettden/128.jpg" class="img-thumbnail">
+            <% end %>
+          </div>
+          <div class="panel-body">
+            <%= link_to user.name, user_path(user) %>
+          </div>
+          <div class="panel-footer">
+            <%= user.email %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  $( document ).ready(function() {
+      console.log( "ready!" );
+      $('#group_user_ids').select2();
+  });
+</script>

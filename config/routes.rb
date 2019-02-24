@@ -9,7 +9,12 @@ Rails.application.routes.draw do
   end
 
   resources :search, only: [:index]
-
+  resources :groups do
+    member do
+      post :join
+      post :leave
+    end
+  end
   resources :calendars, only: [:index]
 
   get '/signup' => 'users#new'

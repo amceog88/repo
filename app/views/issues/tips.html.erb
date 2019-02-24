@@ -1,8 +1,17 @@
 <div class="post-block col-lg-12 col-md-12 col-sm-12 col-xs-12">
   <div class="transitions-enabled" id="posts_index">
+    <div style="text-align: center;">
+      <%= link_to 'Back to Homepage', root_path, class: "btn btn-default" %>
+    </div>
     <div class="col-md-8 col-md-offset-2">
+      <% if @not_read_issues.count > 0 %>
+        <h3 style="text-align: center;">New read issues</h3>
+      <% end %>
       <% @not_read_issues.each do |issue| %>
         <%= render partial: "issue", locals: {issue: issue} %>
+      <% end %>
+      <% if @deadline_issues.count > 0 %>
+        <h3 style="text-align: center;">Close to deadline</h3>
       <% end %>
       <% @deadline_issues.each do |issue| %>
         <%= render partial: "issue", locals: {issue: issue} %>

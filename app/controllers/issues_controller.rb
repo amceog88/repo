@@ -35,6 +35,9 @@ class IssuesController < ApplicationController
   def tips
     @not_read_issues = Issue.where(user: current_user, is_readed: false).order("created_at DESC")
     @deadline_issues = Issue.deadline_issues.where(user: current_user).order("created_at DESC")
+    if @not_read_issues.count == 0 && @deadline_issues.count == 0
+      redirect_to root_path
+    end
 
     @not_read_issues.all.update(is_readed: true)
   end

@@ -49,4 +49,5 @@ class Issue < ApplicationRecord
       "color: red;"
     end
   end
+
 end

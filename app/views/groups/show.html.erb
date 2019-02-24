@@ -1,0 +1,15 @@
+<div class="post-block col-lg-12 col-md-12 col-sm-12 col-xs-12">
+  <h3 style="text-align: center;"><%= @group.name %></h3>
+  <div class="transitions-enabled" id="posts_index">
+    <div class="col-md-8 col-md-offset-2">
+      <% @issues.each do |issue| %>
+        <%= render partial: "issues/issue", locals: {issue: issue} %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="text-center">
+  <nav>
+    <%= paginate @issues %>
+  </nav>
+</div>

@@ -2,23 +2,7 @@
   <div class="post-block col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div class="transitions-enabled" id="posts_index">
       <div class="col-md-8 col-md-offset-2">
-        <%= form_with(model: @issue, local: true) do |form| %>
-          <div class="box panel panel-default">
-            <div class="panel-heading text-center col-12" style="font-size: 12px;">
-              <%= form.select(:state, ['To Do','Doing', 'Done'])%>
-              <%= form.text_field :title, maxlength: 30, required: true %>
-              <%= form.select(:position, [1,2,3])%>
-              <p class="pull-right"><%= form.date_field :end_time %></p>
-            </div>
-            <div class="panel-body">
-              <%= form.text_area :description, maxlength: 120, :class=>'form-control' %>
-            </div>
-            <div class="panel-footer">
-              <%= form.file_field :file, :class => 'btn btn-info col-md-3' %>
-              <%= form.submit :class => 'btn btn-primary' %>
-            </div>
-          </div>
-        <% end %>
+        <%= render 'form', issue: @issue %>
       </div>
     </div>
   </div>

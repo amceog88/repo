@@ -4,8 +4,8 @@ class IssuesController < ApplicationController
 
   def index
     @issue = Issue.new
-    @q = Issue.ransack(params[:q])
-    @issues = @q.result(distinct: true).where(user: current_user).order("created_at DESC").page(params[:page]).per(10)
+    @q = @current_user.current_issue.ransack(params[:q])
+    @issues = @q.result(distinct: true).order("created_at DESC").page(params[:page]).per(10)
   end
 
   def create
@@ -49,7 +49,7 @@ private
   end
 
   def issue_params
-    params.require(:issue).permit(:title, :description, :end_time, :state, :file, :priority)
+    params.require(:issue).permit(:title, :description, :end_time, :state, :file, :priority, group_ids: [])
   end
 
   def redirect_search

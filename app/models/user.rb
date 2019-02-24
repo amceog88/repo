@@ -16,4 +16,10 @@ class User < ApplicationRecord
   def is_member?(group)
     group.users.include?(self)
   end
+
+  def current_issue
+    group_id = self.groups.pluck(:id)
+    groups_issue = IssueGroupShip.where(group_id: group_id).pluck(:issue_id)
+    current_issue = Issue.where(id: (self.issues.pluck(:id) << groups_issue).uniq)
+  end
 end

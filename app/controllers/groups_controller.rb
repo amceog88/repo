@@ -9,7 +9,7 @@ class GroupsController < ApplicationController
   end
 
   def show
-
+    @issues = @group.issues.all.order("created_at DESC").page(params[:page]).per(10)
   end
 
   def join

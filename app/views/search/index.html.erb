@@ -18,7 +18,7 @@
           <div class="panel-heading text-center">
           </div>
           <div class="panel-body">
-            <%= group.name %>
+            <%= link_to group.name, group_path(group) %>
           </div>
           <div class="panel-footer">
             <% if @current_user.is_member?(group) %>

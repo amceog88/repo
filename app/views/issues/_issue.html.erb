@@ -25,6 +25,8 @@
     <% if issue.user == @current_user %>
       <td><%= link_to 'Edit', edit_issue_path(issue), :class=>'btn btn-info' %></td>
       <td><%= link_to 'Destroy', issue, method: :delete, data: { confirm: 'Are you sure?' }, :class=>'btn btn-danger' %></td>
+    <% else %>
+      <h4><%= issue.user.name %>(<%= issue.user.email %>)</h4>
     <% end %>
   </div>
 </div>
